@@ -1,1 +1,1 @@
-demo - https://mobile-store-a.netlify.app/cart
+demo - https://mobile-store-a.netlify.app
