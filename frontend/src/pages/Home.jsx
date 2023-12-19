@@ -8,7 +8,7 @@ export default function Home() {
   useEffect(()=>{
     const handleLatestMobile = async() =>{
       try{
-        const response = await axios('http://localhost:4000/latest_mobiles')
+        const response = await axios('https://mobile-store-mliz.onrender.com/latest_mobiles')
         console.log(response.data.allDetails)
         setLatestMobiles(response.data.allDetails)
       }
@@ -26,7 +26,7 @@ export default function Home() {
         <div className='w-full px-10 py-5 text-xl font-semibold max-sm:text-lg max-sm:px-5'>
           <h2>LATEST MOBILE PHONES</h2>
         </div>
-        <div className='grid grid-cols-5 gap-4 max-2xl:grid-cols-4 gap-y-10 2xl:gap-20 max-xl:grid-cols-3 md:gap-5 max-md:grid-cols-2 max-sm:gap-6'>
+        <div className='grid grid-cols-4 gap-4 max-2xl:grid-cols-4 gap-y-10 2xl:gap-20 max-xl:grid-cols-3 md:gap-5 max-md:grid-cols-2 max-sm:gap-6'>
           {latestMobiles?.map(({mobileImage, mobileName, mobilePrice},index)=>
             <LatestMobile key={index}
             image={mobileImage}

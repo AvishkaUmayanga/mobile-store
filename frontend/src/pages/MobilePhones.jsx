@@ -11,7 +11,7 @@ export default function MobilePhones() {
   useEffect(()=>{
     const fetchMobilesDetails = async()=>{
       try{
-        const response = await axios.get(`http://localhost:4000/mobile_phones/${category}`)
+        const response = await axios.get(`https://mobile-store-mliz.onrender.com/mobile_phones/${category}`)
         console.log(response.data)
         setFetchMobiles(response.data.mobileDetails)
       }

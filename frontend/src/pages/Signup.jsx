@@ -12,7 +12,7 @@ export default function Signup() {
   const handleSignup = async(e) =>{
     e.preventDefault()
     try{
-      const response = await axios.post('/signup', {email, userName, password})
+      const response = await axios.post('https://mobile-store-mliz.onrender.com/signup', {email, userName, password})
       console.log(response.data)
       if(response.data.message==='Signup successfull'){
         alert('Signup successfully')
@@ -31,9 +31,9 @@ export default function Signup() {
           <h3 className='text-3xl font-bold max-sm:text-xl'>Sign up</h3>
           <img src={userImage} alt='user' className=' w-[130px] h-[130px] rounded-full border-4 bg-cover max-sm:w-[90px] max-sm:h-[90px]'/>
           <form onSubmit={handleSignup}  className='flex flex-col items-center gap-5 '>
-            <input placeholder='email' className=' border-b-2 w-[300px] max-sm:w-[200px]' onChange={(e) => setEmail(e.target.value)}/>
-            <input placeholder='user name' className=' border-b-2 w-[300px] max-sm:w-[200px]' onChange={(e) => setUsername(e.target.value)}/>
-            <input placeholder='password' className=' border-b-2 w-[300px] max-sm:w-[200px]' onChange={(e) => setPassword(e.target.value)}/>
+            <input type='text' placeholder='email' className=' border-b-2 w-[300px] max-sm:w-[200px]' required onChange={(e) => setEmail(e.target.value)}/>
+            <input type='text' placeholder='user name' className=' border-b-2 w-[300px] max-sm:w-[200px]' required onChange={(e) => setUsername(e.target.value)}/>
+            <input type='password' placeholder='password' className=' border-b-2 w-[300px] max-sm:w-[200px]'required onChange={(e) => setPassword(e.target.value)}/>
             <button className=' w-[300px] max-sm:w-[200px] bg-lime-600 rounded-full p-1 sm:p-2 text-white text-lg font-semibold'>Sign up</button>
           </form>
           <p className='text-sm sm:text-base'>Already have an account.? <span className='font-semibold text-blue-600 '><NavLink to='/login'>Login</NavLink></span></p>

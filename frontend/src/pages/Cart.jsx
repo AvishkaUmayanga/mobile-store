@@ -13,7 +13,7 @@ export default function Cart() {
     const handleFetch = async() =>{
       const token = localStorage.getItem('authToken')
       try{
-        const response = await axios.get('http://localhost:4000/cartDetails', {headers: {Authorization: `Bearer ${token}`}})
+        const response = await axios.get('https://mobile-store-mliz.onrender.com/cartDetails', {headers: {Authorization: `Bearer ${token}`}})
         console.log(response.data)
         setFetchData(response.data.cartDetails)
       }
@@ -36,6 +36,21 @@ export default function Cart() {
     const delivery = 500
     return subTotal + delivery;
   }
+  
+  const deleteItem = async(itemID) =>{
+    const token = localStorage.getItem('authToken')
+      try{
+        const response = await axios.post('https://mobile-store-mliz.onrender.com/remove_item',{itemID}, {headers:{Authorization: `Bearer ${token}`}})
+        console.log(response.data)
+        if(response.data.message==='Item removed successfully'){
+          alert(response.data.message)
+        }
+      }
+      catch(error){
+        console.error(error)
+      }
+  }
+  
 
   return (
     <div>
@@ -56,7 +71,7 @@ export default function Cart() {
                         <h3 className='text-lg font-semibold'>Rs.{items.mobilePrice}</h3>
                       </div>
                     <div>
-                      <img src={closeBtn} alt='remove' className='w-8 cursor-pointer'/>
+                      <img src={closeBtn} alt='remove' className='w-8 cursor-pointer' onClick={()=>deleteItem(items._id)}/>
                     </div>
                   </div>
                 </div>

@@ -27,7 +27,7 @@ export default function AddMobile() {
     e.preventDefault()
     const token = localStorage.getItem('authToken');
     try{
-      const response = await axios.post('http://localhost:4000/add_new_mobile', {brand, mobileName, mobilePrice, description, mobileImage:image}, {headers: {Authorization: `Bearer ${token}`}})
+      const response = await axios.post('https://mobile-store-mliz.onrender.com/add_new_mobile', {brand, mobileName, mobilePrice, description, mobileImage:image}, {headers: {Authorization: `Bearer ${token}`}})
       console.log(response)
       if(response.data.message==='Saved successfull'){
         alert('Mobile added successfully!')

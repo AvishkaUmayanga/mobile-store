@@ -16,4 +16,17 @@ router.get('/cartDetails',authenticateToken, async(req, res)=>{
     }
 })
 
+//delete item
+router.post('/remove_item',authenticateToken, async(req,res)=>{
+    try{
+        const itemToDelete = req.body.itemID
+        await cartModel.updateOne({email:req.user.email},{$pull:{itemDetails:{_id:itemToDelete}}})
+        res.status(200).json({ message: 'Item removed successfully' });
+    }
+    catch(error){
+        console.error(error)
+        return res.status(500).json({message : 'Server error'})
+    }
+})
+
 module.exports = router

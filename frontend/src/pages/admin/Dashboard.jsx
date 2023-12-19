@@ -10,7 +10,7 @@ export default function Dashboard() {
     const allData = async()=>{
       const token = localStorage.getItem('authToken')
       try{
-        const response = await axios.get('http://localhost:4000/all_mobiles', {headers: {Authorization: `Bearer ${token}`}})
+        const response = await axios.get('https://mobile-store-mliz.onrender.com/all_mobiles', {headers: {Authorization: `Bearer ${token}`}})
         console.log(response.data.allDetails)
         setFetchMobiles(response.data.allDetails)
       }

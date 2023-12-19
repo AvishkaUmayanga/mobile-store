@@ -13,7 +13,7 @@ export default function Login() {
   const handleLogin = async(e) =>{
     e.preventDefault()
     try{
-      const response = await axios.post('http://localhost:4000/login', {email,password})
+      const response = await axios.post('https://mobile-store-mliz.onrender.com/login', {email,password})
       console.log(response.data)
       if(response.data.message==='Login sucessfull'){
         alert('Login sucessfull')

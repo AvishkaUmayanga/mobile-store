@@ -12,7 +12,7 @@ export default function MobileDetails() {
   useEffect(()=>{
     const describeMobile = async() =>{
       try{
-        const response = await axios.get(`http://localhost:4000/mobile_details/${phoneName}`)
+        const response = await axios.get(`https://mobile-store-mliz.onrender.com/mobile_details/${phoneName}`)
         console.log(response.data)
         setFetchDescribe(response.data.details)
       }
@@ -27,7 +27,7 @@ export default function MobileDetails() {
   const handleAddToCart = async() =>{
     const token = localStorage.getItem('authToken')
     try{
-      const response = await axios.post('http://localhost:4000/add_to_cart', {mobileName: phoneName, mobilePrice: fetchDescribe.mobilePrice},{headers: {Authorization: `Bearer ${token}`}})
+      const response = await axios.post('https://mobile-store-mliz.onrender.com/add_to_cart', {mobileName: phoneName, mobilePrice: fetchDescribe.mobilePrice},{headers: {Authorization: `Bearer ${token}`}})
       console.log('cart response', response.data.message)
       if(response.data.message==='Item added'){
         alert('Item added')
